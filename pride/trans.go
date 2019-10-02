@@ -6,7 +6,7 @@ import (
 
 // PrintTransPrideFlag prints a trans pride flag in your terminal.
 func PrintTransPrideFlag() {
-	height := 24 // TODO: window sizing on unix
+	_, height := windowSize()
 	segmentHeight := height / 5
 	for segment := 1; segment <= 5; segment++ {
 		line := "\n"
