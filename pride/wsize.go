@@ -10,5 +10,5 @@ func windowSize() (width, height int) {
 	if err != nil {
 		return 80, 24
 	}
-	return width, height
+	return
 }
