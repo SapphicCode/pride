@@ -1,4 +1,4 @@
-package trans
+package pride
 
 import (
   "os"
