@@ -5,10 +5,10 @@ import (
 	"os"
 )
 
-func windowSize() (height, width int) {
+func windowSize() (width, height int) {
 	width, height, err := terminal.GetSize(int(os.Stdout.Fd()))
 	if err != nil {
-		return 24, 80
+		return 80, 24
 	}
-	return height, width
+	return width, height
 }
