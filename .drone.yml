@@ -1,0 +1,30 @@
+kind: pipeline
+type: docker
+name: build
+
+steps:
+- name: lint
+  image: golang:1.13-alpine
+  commands:
+  - go get golang.org/x/lint/golint
+  - test -z $(gofmt -l .)
+  - golint -set_exit_status ./...
+
+- name: prepare and build
+  image: golang:1.13-alpine
+  commands:
+  - go get github.com/mitchellh/gox
+  - go get -v -d ./...
+  - mkdir -p dist
+  - gox -parallel=16 -output="dist/{{.Dir}}_{{.OS}}_{{.Arch}}" -ldflags "-s -w" ./...
+  environment:
+    CGO_ENABLED: 0
+
+- name: release binaries
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    files: dist/*
+  when:
+    event: tag
