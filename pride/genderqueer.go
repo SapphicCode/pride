@@ -1,10 +1,10 @@
-package main
+package pride
 
 import (
 	"fmt"
 )
 
-// PrintGenderqueerPrideFlag prints a trans pride flag in your terminal.
+// PrintGenderqueerPrideFlag prints a genderqueer pride flag in your terminal.
 func PrintGenderqueerPrideFlag() {
 	_, height := windowSize()
 	segmentHeight := height / 3
@@ -19,9 +19,12 @@ func PrintGenderqueerPrideFlag() {
 
 		var colorCode int
 		switch segment {
-			case 1:		colorCode = 105
-			case 2:		colorCode = 107
-			case 3:		colorCode = 42
+		case 1:
+			colorCode = 105
+		case 2:
+			colorCode = 107
+		case 3:
+			colorCode = 42
 		}
 		fmt.Printf("\x1B[%dm%s\x1B[0m", colorCode, line)
 	}
