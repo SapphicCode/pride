@@ -19,14 +19,14 @@ func PrintTransPrideFlag() {
 
 		var colorCode string
 		if segment == 1 || segment == 5 {
-			colorCode = "106"
+			colorCode = "039"
 		}
 		if segment == 2 || segment == 4 {
-			colorCode = "105"
+			colorCode = "218"
 		}
 		if segment == 3 {
-			colorCode = "107"
+			colorCode = "015"
 		}
-		fmt.Printf("\x1B[%sm%s\x1B[0m", colorCode, line)
+		fmt.Printf("\x1B[48;5;%sm%s\x1B[0m", colorCode, line)
 	}
 }
