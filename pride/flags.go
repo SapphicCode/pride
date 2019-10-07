@@ -4,4 +4,5 @@ package pride
 var Flags = map[string]func(){
 	"trans":       PrintTransPrideFlag,
 	"genderqueer": PrintGenderqueerPrideFlag,
+	"pansexual":   PrintPansexualPrideFlag,
 }
