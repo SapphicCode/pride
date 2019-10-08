@@ -16,7 +16,15 @@ steps:
   - go get github.com/mitchellh/gox
   - go get -v -d ./...
   - mkdir -p dist
-  - arch=$(go tool dist list | tr "\n" " " | xargs)
+  - arch=$(go tool dist list | 
+    tr -d "android/386" | \
+    tr -d "android/arm" | \
+    tr -d "android/arm64" | \
+    tr -d "darwin/arm" | \
+    tr -d "darwin/arm64" | \
+    tr -d "nacl/arm" | \
+    tr -d "nacl/amd64p32" | \
+    tr "\n" " " | xargs)
   - gox -parallel=16 -osarch="$arch" -output="dist/{{.Dir}}_{{.OS}}_{{.Arch}}" -ldflags "-s -w" ./...
   environment:
     CGO_ENABLED: 0
