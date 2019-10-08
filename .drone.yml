@@ -16,7 +16,8 @@ steps:
   - go get github.com/mitchellh/gox
   - go get -v -d ./...
   - mkdir -p dist
-  - gox -parallel=16 -output="dist/{{.Dir}}_{{.OS}}_{{.Arch}}" -ldflags "-s -w" ./...
+  - arch=$(go tool dist list | tr "\n" " ")
+  - gox -parallel=16 -goarch="$arch" -output="dist/{{.Dir}}_{{.OS}}_{{.Arch}}" -ldflags "-s -w" ./...
   environment:
     CGO_ENABLED: 0
 
