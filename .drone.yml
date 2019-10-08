@@ -18,7 +18,7 @@ steps:
   - mkdir -p dist
   - arch=$(go tool dist list |
     tr "\n" " " |
-    sed -r "s/((android|nacl)\/\w+|darwin\/arm(64)?)//g"
+    sed -r "s/((android|nacl)\/\w+|darwin\/arm(64)?)//g" |
     xargs)
   - gox -parallel=16 -osarch="$arch" -output="dist/{{.Dir}}_{{.OS}}_{{.Arch}}" -ldflags "-s -w" ./...
   environment:
