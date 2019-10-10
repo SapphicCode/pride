@@ -2,8 +2,8 @@ package pride
 
 import (
 	"fmt"
-	"time"
 	"math/rand"
+	"time"
 )
 
 // PrintRandomPrideFlag prints a random pride flag in your terminal.
@@ -15,9 +15,9 @@ func PrintRandomPrideFlag() {
 	currFlagIndex := 0
 
 	for pride, printPrideFlag := range Flags {
-		if (currFlagIndex == randFlagIndex) {
+		if currFlagIndex == randFlagIndex {
 			fmt.Println(pride)
-			printPrideFlag();
+			printPrideFlag()
 			return
 		}
 		currFlagIndex++
