@@ -6,9 +6,10 @@ steps:
 - name: lint
   image: golang:1.13-alpine
   commands:
-  - go get golang.org/x/lint/golint
+  - go get golang.org/x/lint/golint github.com/securego/gosec/cmd/gosec
   - test -z $(gofmt -l .)
   - golint -set_exit_status ./...
+  - gosec -quiet ./...
 
 - name: prepare and build
   image: golang:1.13-alpine
